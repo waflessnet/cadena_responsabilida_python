@@ -1,14 +1,14 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
 from logging import Handler
-from typing import Optional, Any, List
+from typing import Optional, List
 
 
 class RequestHandler:
-    arr = None  # only learning
+    arr = None
     enriched: List[str] = []
 
-    def __init__(self, arr: List, enriched: List[str]):
+    def __init__(self, arr: List = None, enriched: List[str] = None):
         self.enriched: List[str] = enriched
         self.arr: List = arr
 
@@ -40,20 +40,20 @@ class AbstractHandler(Handler):
 
 class StepOne(AbstractHandler):
     def handle(self, request: RequestHandler) -> None:
-        print('one')
-        request.enriched.append('paso 1')
+        request.enriched.append('one')
+        print(request.enriched)
         super().handle(request)
 
 
 class StepTwo(AbstractHandler):
     def handle(self, request: RequestHandler) -> None:
-        print('two')
-        request.enriched.append('paso 2')
+        request.enriched.append('two')
+        print(request.enriched)
         super().handle(request)
 
 
 class StepThree(AbstractHandler):
     def handle(self, request: RequestHandler) -> None:
-        print('three')
-        request.enriched.append('paso 3')
+        request.enriched.append('tree')
+        print(request.enriched)
         super().handle(request)

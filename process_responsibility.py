@@ -5,11 +5,11 @@ class ProcessResponsibility:
 
     @staticmethod
     def do():
-        req = RequestHandler(arr=[], enriched=['init'])
+        req = RequestHandler(enriched=['init'])
 
         sp1 = StepOne()
         sp2 = sp1.set_next(StepTwo())
-        sp3 = sp2.set_next(StepThree())
+        sp2.set_next(StepThree())
 
         # start pipeline
         sp1.handle(req)
